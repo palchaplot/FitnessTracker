@@ -1,6 +1,8 @@
-﻿namespace UserService.Services.Interfaces
+﻿using UserService.DTO;
+namespace UserService.Services.Interfaces;
+
+public interface IAuthService
 {
-    public class IAuthService
-    {
-    }
+    Task RegisterAsync(Register dto);
+
 }
