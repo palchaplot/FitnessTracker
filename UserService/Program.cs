@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using UserService.Data;
-
+using UserService.Repositories;
+using UserService.Repositories.Interfaces;
+using UserService.Services;
+using UserService.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAuthService,AuthService>();
 
 var app = builder.Build();
 

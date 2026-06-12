@@ -1,4 +1,8 @@
-﻿namespace UserService.Services
+﻿using UserService.DTO;
+using UserService.Models;
+using UserService.Repositories.Interfaces;
+using UserService.Services.Interfaces;
+namespace UserService.Services
 {
     public class AuthService:IAuthService
 
@@ -10,7 +14,7 @@
 			_userRepository = userRepository;
 		}
 
-		public async Task RegisterAsync(RegisterDto dto)
+		public async Task RegisterAsync(Register dto)
 		{
 			var existingUser =
 				await _userRepository.GetByEmailAsync(dto.Email);
@@ -28,6 +32,20 @@
 			};
 
 			await _userRepository.AddUserAsync(user);
+		}
+
+		public async Task<bool> LoginAsync(Login dto)
+		{
+			var user = await _userRepository.GetByEmailAsync(dto.Email);
+			if (user == null)
+			{
+				return false;
+			}
+			if(user.Password != dto.Password)
+			{
+				return false;
+			}
+			return true;
 		}
 	}
 }

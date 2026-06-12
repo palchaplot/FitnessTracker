@@ -1,8 +1,10 @@
-﻿using UserService.DTO;
-namespace UserService.Services.Interfaces;
-
-public interface IAuthService
+﻿using System.Threading.Tasks;
+using UserService.DTO;
+namespace UserService.Services.Interfaces
 {
-    Task RegisterAsync(Register dto);
-
+    public interface IAuthService
+    {
+        Task RegisterAsync(Register dto);
+        Task<bool> LoginAsync(Login dto);
+    }
 }

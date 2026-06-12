@@ -19,5 +19,18 @@ namespace UserService.Controllers
             return Ok("User Registered Successfully");
 
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(Login dto)
+        {
+            var result = await _authService.LoginAsync(dto);
+
+            if (!result)
+            {
+                return BadRequest("Invalid User or Password");
+            }
+
+            return Ok("Login Successfull");
+        }
     }
 }
