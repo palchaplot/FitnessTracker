@@ -22,6 +22,16 @@
   },
   {
     "ContainingType": "UserService.Controllers.AuthController",
+    "Method": "Profile",
+    "RelativePath": "profile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserService.Controllers.AuthController",
     "Method": "Register",
     "RelativePath": "register",
     "HttpMethod": "POST",

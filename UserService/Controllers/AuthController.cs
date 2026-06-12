@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using UserService.DTO;
 using UserService.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 
 namespace UserService.Controllers
@@ -19,18 +21,27 @@ namespace UserService.Controllers
             return Ok("User Registered Successfully");
 
         }
+        [Authorize]
+        [HttpGet("profile")]
+        public IActionResult Profile()
+        {
+            return Ok("You are Authenticated");
+        }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(Login dto)
         {
-            var result = await _authService.LoginAsync(dto);
+            var token = await _authService.LoginAsync(dto);
 
-            if (!result)
+            if (token == null)
             {
-                return BadRequest("Invalid User or Password");
+                return Unauthorized("Invalid Email or Password");
             }
 
-            return Ok("Login Successfull");
+            return Ok(new
+            {
+                Token = token
+            });
         }
     }
 }
