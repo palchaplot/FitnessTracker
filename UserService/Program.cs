@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -68,6 +69,9 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
 });
+builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
+
+builder.Services.AddScoped<IWorkoutService, WorkoutService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
