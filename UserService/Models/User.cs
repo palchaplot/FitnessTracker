@@ -30,5 +30,7 @@
 
         public ICollection<Workout> Workouts { get; set; }
         = new List<Workout>();
+
+        public ICollection<Goal> Goals { get; set; } = new List<Goal>();
     }
 }

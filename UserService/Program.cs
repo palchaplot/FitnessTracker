@@ -11,6 +11,7 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -72,6 +73,11 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 
 builder.Services.AddScoped<IWorkoutService, WorkoutService>();
+
+builder.Services.AddScoped<IGoalRepository, GoalRepository>();
+
+builder.Services.AddScoped<IGoalService, GoalService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
