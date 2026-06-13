@@ -7,9 +7,10 @@ namespace UserService.Services.Interfaces
     {
         Task<IEnumerable<Workout>> GetAllAsync();
 
+        Task<IEnumerable<Workout>> GetByUserIdAsync(int userId);
         Task<Workout?> GetByIdAsync(int id);
 
-        Task AddAsync(CreateWorkout dto);
+        Task AddAsync(CreateWorkout dto, int userId);
 
         Task UpdateAsync(int id, UpdateWorkout dto);
 

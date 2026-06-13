@@ -8,5 +8,9 @@
         public int  CaloriesBurned { get; set; } 
         public DateTime WorkoutDate { get; set; }
 
+        public int UserId { get; set; }
+
+        public User User { get; set; }
+
     }
 }

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "h6r8Zy1EcWc=",
+  "dgSpecHash": "jYrNB1ATy0g=",
   "success": true,
   "projectFilePath": "C:\\Users\\chapl\\OneDrive\\Documents\\pal document\\projects\\FitnessApp\\Backend\\FitnessTracker\\UserService\\UserService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chapl\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\chapl\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\chapl\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
     "C:\\Users\\chapl\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\chapl\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.17\\microsoft.aspnetcore.authentication.jwtbearer.8.0.17.nupkg.sha512",
     "C:\\Users\\chapl\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

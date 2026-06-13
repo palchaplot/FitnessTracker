@@ -138,3 +138,5 @@ C:\Users\chapl\OneDrive\Documents\pal document\projects\FitnessApp\Backend\Fitne
 C:\Users\chapl\OneDrive\Documents\pal document\projects\FitnessApp\Backend\FitnessTracker\UserService\obj\Debug\net8.0\UserService.genruntimeconfig.cache
 C:\Users\chapl\OneDrive\Documents\pal document\projects\FitnessApp\Backend\FitnessTracker\UserService\obj\Debug\net8.0\ref\UserService.dll
 C:\Users\chapl\OneDrive\Documents\pal document\projects\FitnessApp\Backend\FitnessTracker\UserService\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\chapl\OneDrive\Documents\pal document\projects\FitnessApp\Backend\FitnessTracker\UserService\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\chapl\OneDrive\Documents\pal document\projects\FitnessApp\Backend\FitnessTracker\UserService\bin\Debug\net8.0\BCrypt-Net-Next.dll

@@ -24,6 +24,13 @@ namespace UserService.Repositories
             return await _context.Workouts.FindAsync(id);
         }
 
+        public async Task<IEnumerable<Workout>> GetByUserIdAsync(int userId)
+        {
+            return await _context.Workouts
+                .Where(w => w.UserId == userId)
+                .ToListAsync();
+        }
+
         public async Task AddAsync(Workout workout)
         {
             await _context.Workouts.AddAsync(workout);

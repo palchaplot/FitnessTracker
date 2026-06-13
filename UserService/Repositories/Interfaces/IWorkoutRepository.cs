@@ -5,6 +5,7 @@ namespace UserService.Repositories.Interfaces
 
     {
         Task<IEnumerable<Workout>> GetAllAsync();
+        Task<IEnumerable<Workout>> GetByUserIdAsync(int userId);
         Task<Workout?> GetByIdAsync(int id);
 
         Task AddAsync(Workout workout);

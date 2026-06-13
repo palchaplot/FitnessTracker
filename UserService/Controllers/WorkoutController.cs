@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using UserService.DTO;
 using UserService.Services.Interfaces;
+
 
 namespace UserService.Controllers
 {
@@ -21,11 +23,16 @@ namespace UserService.Controllers
             [HttpGet]
             public async Task<IActionResult> GetAll()
             {
-                var workouts = await _workoutService.GetAllAsync();
-                return Ok(workouts);
-            }
+                 var userId = int.Parse(
+                 User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-            [HttpGet("{id}")]
+                 var workouts = await _workoutService.GetByUserIdAsync(userId);
+
+                return Ok(workouts);
+
+        }
+
+        [HttpGet("{id}")]
             public async Task<IActionResult> GetById(int id)
             {
                 var workout = await _workoutService.GetByIdAsync(id);
@@ -36,15 +43,18 @@ namespace UserService.Controllers
                 return Ok(workout);
             }
 
-            [HttpPost]
-            public async Task<IActionResult> Create(CreateWorkout dto)
-            {
-                await _workoutService.AddAsync(dto);
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateWorkout dto)
+        {
+            var userId = int.Parse(
+                User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-                return Ok("Workout Created Successfully");
-            }
+            await _workoutService.AddAsync(dto, userId);
 
-            [HttpPut("{id}")]
+            return Ok("Workout Created Successfully");
+        }
+
+        [HttpPut("{id}")]
             public async Task<IActionResult> Update(int id, UpdateWorkout dto)
             {
                 await _workoutService.UpdateAsync(id, dto);

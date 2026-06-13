@@ -20,19 +20,25 @@ namespace UserService.Services
             return await _workoutRepository.GetAllAsync();
         }
 
+        public async Task<IEnumerable<Workout>> GetByUserIdAsync(int userId)
+        {
+            return await _workoutRepository.GetByUserIdAsync(userId);
+        }
+
         public async Task<Workout?> GetByIdAsync(int id)
         {
             return await _workoutRepository.GetByIdAsync(id);
         }
 
-        public async Task AddAsync(CreateWorkout dto)
+        public async Task AddAsync(CreateWorkout dto, int userId)
         {
             var workout = new Workout
             {
                 ExerciseName = dto.ExerciseName,
                 Duration = dto.Duration,
                 CaloriesBurned = dto.CaloriesBurned,
-                WorkoutDate = DateTime.UtcNow
+                WorkoutDate = DateTime.UtcNow,
+                UserId = userId
             };
 
             await _workoutRepository.AddAsync(workout);

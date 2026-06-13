@@ -27,5 +27,8 @@
             get;
             set;
         } = DateTime.UtcNow;
+
+        public ICollection<Workout> Workouts { get; set; }
+        = new List<Workout>();
     }
 }

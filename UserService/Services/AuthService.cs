@@ -34,7 +34,7 @@ namespace UserService.Services
 			{
 				Name = dto.Name,
 				Email = dto.Email,
-				Password = dto.Password
+				Password = BCrypt.Net.BCrypt.HashPassword(dto.Password)
 			};
 
 			await _userRepository.AddUserAsync(user);
@@ -47,7 +47,7 @@ namespace UserService.Services
 			{
 				return null;
 			}
-			if(user.Password != dto.Password)
+			if(!BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
 			{
 				return null;
 			}
