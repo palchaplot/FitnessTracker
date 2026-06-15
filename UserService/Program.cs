@@ -77,6 +77,7 @@ builder.Services.AddScoped<IWorkoutService, WorkoutService>();
 builder.Services.AddScoped<IGoalRepository, GoalRepository>();
 
 builder.Services.AddScoped<IGoalService, GoalService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 var app = builder.Build();
 

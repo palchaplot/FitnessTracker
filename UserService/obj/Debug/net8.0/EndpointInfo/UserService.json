@@ -154,6 +154,18 @@
         }
       }
     },
+    "/api/Dashboard": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Goal": {
       "get": {
         "tags": [

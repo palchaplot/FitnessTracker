@@ -11,5 +11,7 @@ namespace UserService.Repositories.Interfaces
         Task UpdateAsync(Goal goal);
         Task DeleteAsync(Goal goal);
 
+        Task<int> GetTotalGoalsAsync(int userId);
+
     }
 }

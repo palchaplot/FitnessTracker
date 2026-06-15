@@ -1,5 +1,15 @@
 [
   {
+    "ContainingType": "UserService.Controllers.DashboardController",
+    "Method": "GetDashboard",
+    "RelativePath": "api/Dashboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "UserService.Controllers.GoalController",
     "Method": "GetAll",
     "RelativePath": "api/Goal",

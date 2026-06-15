@@ -13,5 +13,11 @@ namespace UserService.Repositories.Interfaces
         Task UpdateAsync(Workout workout);
 
         Task DeleteAsync(Workout workout);
+
+        Task<int> GetTotalWorkoutsAsync(int userId);
+
+        Task<int> GetTotalWorkoutMinutesAsync(int userId);
+
+        Task<int> GetTotalCaloriesBurnedAsync(int userId);
     }
 }

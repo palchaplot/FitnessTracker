@@ -49,5 +49,25 @@ namespace UserService.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<int> GetTotalWorkoutsAsync(int userId)
+        {
+            return await _context.Workouts
+                .CountAsync(w => w.UserId == userId);
+        }
+
+        public async Task<int> GetTotalWorkoutMinutesAsync(int userId)
+        {
+            return await _context.Workouts
+                .Where(w => w.UserId == userId)
+                .SumAsync(w => w.Duration);
+        }
+
+        public async Task<int> GetTotalCaloriesBurnedAsync(int userId)
+        {
+            return await _context.Workouts
+                .Where(w => w.UserId == userId)
+                .SumAsync(w => w.CaloriesBurned);
+        }
+
     }
 }

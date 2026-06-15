@@ -44,5 +44,11 @@ namespace UserService.Repositories
             _context.Goals.Remove(goal);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<int> GetTotalGoalsAsync(int userId)
+        {
+            return await _context.Goals
+                .CountAsync(g => g.UserId == userId);
+        }
     }
 }
