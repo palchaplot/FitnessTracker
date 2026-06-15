@@ -54,5 +54,41 @@ namespace UserService.Controllers
                 Token = token
             });
         }
+
+        [Authorize]
+        [HttpPut("profile")]
+        public async Task<IActionResult> UpdateProfile(UpdateProfile dto)
+        {
+            var userId = int.Parse(
+                User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+
+            await _authService.UpdateProfileAsync(userId, dto);
+
+            return Ok("Profile Updated Successfully");
+        }
+
+        [Authorize]
+        [HttpPut("change-password")]
+        public async Task<IActionResult> ChangePassword( ChangePassword dto)
+        {
+            var userId = int.Parse(
+                User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+
+            await _authService.ChangePasswordAsync(userId, dto);
+
+            return Ok("Password changed successfully");
+        }
+
+        [Authorize]
+        [HttpDelete("delete-account")]
+        public async Task<IActionResult> DeleteAccount()
+        {
+            var userId = int.Parse(
+                User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+
+            await _authService.DeleteAccountAsync(userId);
+
+            return Ok("Account deleted successfully");
+        }
     }
 }

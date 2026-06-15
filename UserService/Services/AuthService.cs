@@ -93,5 +93,48 @@ namespace UserService.Services
                 Email = user.Email
             };
         }
+
+        public async Task UpdateProfileAsync(int userId, UpdateProfile dto)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+
+            if (user == null)
+                throw new Exception("User not found");
+
+            user.Name = dto.Name;
+            user.Email = dto.Email;
+
+            await _userRepository.UpdateUserAsync(user);
+        }
+
+        public async Task ChangePasswordAsync(int userId, ChangePassword dto)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+
+            if (user == null)
+                throw new Exception("User not found");
+
+            if (!BCrypt.Net.BCrypt.Verify(
+                    dto.CurrentPassword,
+                    user.Password))
+            {
+                throw new Exception("Current password is incorrect");
+            }
+
+            user.Password =
+                BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
+
+            await _userRepository.UpdateUserAsync(user);
+        }
+
+        public async Task DeleteAccountAsync(int userId)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+
+            if (user == null)
+                throw new Exception("User not found");
+
+            await _userRepository.DeleteUserAsync(user);
+        }
     }
 }

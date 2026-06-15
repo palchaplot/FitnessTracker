@@ -159,6 +159,37 @@
   },
   {
     "ContainingType": "UserService.Controllers.AuthController",
+    "Method": "ChangePassword",
+    "RelativePath": "change-password",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CurrentPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NewPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserService.Controllers.AuthController",
+    "Method": "DeleteAccount",
+    "RelativePath": "delete-account",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserService.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "login",
     "HttpMethod": "POST",
@@ -186,6 +217,27 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserService.Controllers.AuthController",
+    "Method": "UpdateProfile",
+    "RelativePath": "profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
