@@ -6,7 +6,8 @@ namespace UserService.Services.Interfaces
     {
         Task RegisterAsync(Register dto);
         Task<string> LoginAsync(Login dto);
+        Task<UserProfileDto?> GetProfileAsync(int userId);
 
-        
+
     }
 }

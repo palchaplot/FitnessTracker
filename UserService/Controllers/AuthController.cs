@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System.Security.Claims;
 using UserService.DTO;
 using UserService.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 
 namespace UserService.Controllers
@@ -23,9 +24,19 @@ namespace UserService.Controllers
         }
         [Authorize]
         [HttpGet("profile")]
-        public IActionResult Profile()
+        public async Task<IActionResult> Profile()
         {
-            return Ok("You are Authenticated");
+            var userId = int.Parse(
+        User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+
+            var profile = await _authService.GetProfileAsync(userId);
+
+            if (profile == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(profile);
         }
 
         [HttpPost("login")]

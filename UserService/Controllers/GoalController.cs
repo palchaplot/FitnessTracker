@@ -33,10 +33,16 @@ namespace UserService.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
+            var userId = int.Parse(
+            User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+
             var goal = await _goalService.GetByIdAsync(id);
 
             if (goal == null)
                 return NotFound();
+
+            if (goal.UserId != userId)
+                return Forbid();
 
             return Ok(goal);
         }
@@ -55,6 +61,17 @@ namespace UserService.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, UpdateGoal dto)
         {
+            var userId = int.Parse(
+            User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+
+            var goal = await _goalService.GetByIdAsync(id);
+
+            if (goal == null)
+                return NotFound();
+
+            if (goal.UserId != userId)
+                return Forbid();
+
             await _goalService.UpdateAsync(id, dto);
 
             return Ok("Goal Updated Successfully");
@@ -63,6 +80,17 @@ namespace UserService.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
+            var userId = int.Parse(
+            User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+
+            var goal = await _goalService.GetByIdAsync(id);
+
+            if (goal == null)
+                return NotFound();
+
+            if (goal.UserId != userId)
+                return Forbid();
+
             await _goalService.DeleteAsync(id);
 
             return Ok("Goal Deleted Successfully");

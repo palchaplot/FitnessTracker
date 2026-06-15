@@ -77,5 +77,21 @@ namespace UserService.Services
             return new JwtSecurityTokenHandler()
                 .WriteToken(token);
         }
+        public async Task<UserProfileDto?> GetProfileAsync(int userId)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return new UserProfileDto
+            {
+                UserId = user.UserId,
+                Name = user.Name,
+                Email = user.Email
+            };
+        }
     }
 }
